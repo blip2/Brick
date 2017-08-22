@@ -122,6 +122,8 @@ brick:Basement bf:usesTag :Basement .
 
 brick:Battery bf:usesTag :Battery .
 
+brick:Blind bf:usesTag :Blind .
+
 brick:Boiler bf:usesTag :Boiler .
 
 brick:Building bf:usesTag :Building .
@@ -200,6 +202,8 @@ brick:Inverter bf:usesTag :Inverter .
 
 brick:Laboratory bf:usesTag :Laboratory .
 
+brick:Louvre bf:usesTag :Louvre .
+
 brick:Luminance bf:usesTag :Luminance .
 
 brick:Occupancy bf:usesTag :Occupancy .
@@ -257,6 +261,8 @@ brick:Zone bf:usesTag :Zone .
     rdfs:subClassOf bf:Tag ;
     skos:definition ""@en ;
     bf:usedBy brick:Basement .
+
+:Blind bf:usedBy brick:Blind .
 
 :Chair a owl:Class ;
     rdfs:label "Chair"@en ;
@@ -341,6 +347,8 @@ brick:Zone bf:usesTag :Zone .
     rdfs:subClassOf bf:Tag ;
     skos:definition ""@en ;
     bf:usedBy brick:Laboratory .
+
+:Louvre bf:usedBy brick:Louvre .
 
 :Response a owl:Class ;
     rdfs:label "Response"@en ;
@@ -866,6 +874,9 @@ brick:Schedule_Temperature bf:usesTag :Schedule,
 
 brick:Server_Room bf:usesTag :Room,
         :Server .
+
+brick:Shading_System bf:usesTag :Shading,
+        :System .
 
 brick:Short_Cycle bf:usesTag :Cycle,
         :Short .
@@ -2017,6 +2028,10 @@ brick:Running_Hour_Sensor bf:usesTag :Hour,
 brick:Schedule_Temperature_Setpoint bf:usesTag :Schedule,
         :Setpoint,
         :Temperature .
+
+brick:Shading_System_Command bf:usesTag :Command,
+        :Shading,
+        :System .
 
 brick:Short_Cycle_Alarm bf:usesTag :Alarm,
         :Cycle,
@@ -4208,6 +4223,16 @@ brick:Return_Heat_Valve_Command bf:usesTag :Command,
         :Return,
         :Valve .
 
+brick:Shading_System_Position_Sensor bf:usesTag :Position,
+        :Sensor,
+        :Shading,
+        :System .
+
+brick:Shading_System_Position_Setpoint bf:usesTag :Position,
+        :Setpoint,
+        :Shading,
+        :System .
+
 brick:Solar_Azimuth_Angle_Sensor bf:usesTag :Angle,
         :Azimuth,
         :Sensor,
@@ -4779,6 +4804,11 @@ brick:Zone_Air_Temperature_Sensor bf:usesTag :Air,
         brick:Lighting_System_Luminance_Command,
         brick:Lighting_System_Luminance_Sensor,
         brick:Lighting_System_Luminance_Setpoint .
+
+:Shading bf:usedBy brick:Shading_System,
+        brick:Shading_System_Command,
+        brick:Shading_System_Position_Sensor,
+        brick:Shading_System_Position_Setpoint .
 
 :Steam_System bf:usedBy brick:Steam_System_Current_Steam_Usage_Meter,
         brick:Steam_System_Monthly_Steam_Usage_Meter,
@@ -13603,39 +13633,6 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:Vent_Operating_Mode,
         brick:Vent_Operating_Mode_Status .
 
-:Position a owl:Class ;
-    rdfs:label "Position"@en ;
-    rdfs:subClassOf bf:Tag ;
-    skos:definition ""@en ;
-    bf:usedBy brick:AHU_Bypass_Damper_Position_Sensor,
-        brick:AHU_Economizer_Damper_Min_Position_Setpoint,
-        brick:AHU_Mixed_Air_Damper_Position_Command,
-        brick:AHU_Mixed_Air_Damper_Position_Sensor,
-        brick:AHU_Outside_Air_Damper_Min_Position_Setpoint,
-        brick:AHU_Outside_Air_Damper_Position_Command,
-        brick:AHU_Outside_Air_Damper_Position_Sensor,
-        brick:Air_Damper_Min_Position,
-        brick:Air_Damper_Position,
-        brick:Bypass_Damper_Position,
-        brick:Bypass_Damper_Position_Sensor,
-        brick:Damper_Position,
-        brick:Damper_Position_Sensor,
-        brick:Discharge_Air_Damper_Max_Position,
-        brick:Discharge_Air_Damper_Max_Position_Setpoint,
-        brick:Economizer_Damper_Min_Position,
-        brick:Economizer_Damper_Min_Position_Setpoint,
-        brick:Fume_Hood_Sash_Position_Sensor,
-        brick:Mixed_Air_Damper_Position,
-        brick:Mixed_Air_Damper_Position_Command,
-        brick:Mixed_Air_Damper_Position_Sensor,
-        brick:Outside_Air_Damper_Min_Position_Setpoint,
-        brick:Outside_Air_Damper_Position_Command,
-        brick:Outside_Air_Damper_Position_Sensor,
-        brick:Sash_Position,
-        brick:Supply_Air_Damper_Max_Position,
-        brick:Supply_Air_Damper_Max_Position_Setpoint,
-        brick:VAV_Damper_Position_Sensor .
-
 :Demand a owl:Class ;
     rdfs:label "Demand"@en ;
     rdfs:subClassOf bf:Tag ;
@@ -13670,6 +13667,41 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:VAV_Cooling_Request_Setpoint,
         brick:VAV_Heating_Demand_Setpoint,
         brick:VAV_Heating_Request_Setpoint .
+
+:Position a owl:Class ;
+    rdfs:label "Position"@en ;
+    rdfs:subClassOf bf:Tag ;
+    skos:definition ""@en ;
+    bf:usedBy brick:AHU_Bypass_Damper_Position_Sensor,
+        brick:AHU_Economizer_Damper_Min_Position_Setpoint,
+        brick:AHU_Mixed_Air_Damper_Position_Command,
+        brick:AHU_Mixed_Air_Damper_Position_Sensor,
+        brick:AHU_Outside_Air_Damper_Min_Position_Setpoint,
+        brick:AHU_Outside_Air_Damper_Position_Command,
+        brick:AHU_Outside_Air_Damper_Position_Sensor,
+        brick:Air_Damper_Min_Position,
+        brick:Air_Damper_Position,
+        brick:Bypass_Damper_Position,
+        brick:Bypass_Damper_Position_Sensor,
+        brick:Damper_Position,
+        brick:Damper_Position_Sensor,
+        brick:Discharge_Air_Damper_Max_Position,
+        brick:Discharge_Air_Damper_Max_Position_Setpoint,
+        brick:Economizer_Damper_Min_Position,
+        brick:Economizer_Damper_Min_Position_Setpoint,
+        brick:Fume_Hood_Sash_Position_Sensor,
+        brick:Mixed_Air_Damper_Position,
+        brick:Mixed_Air_Damper_Position_Command,
+        brick:Mixed_Air_Damper_Position_Sensor,
+        brick:Outside_Air_Damper_Min_Position_Setpoint,
+        brick:Outside_Air_Damper_Position_Command,
+        brick:Outside_Air_Damper_Position_Sensor,
+        brick:Sash_Position,
+        brick:Shading_System_Position_Sensor,
+        brick:Shading_System_Position_Setpoint,
+        brick:Supply_Air_Damper_Max_Position,
+        brick:Supply_Air_Damper_Max_Position_Setpoint,
+        brick:VAV_Damper_Position_Sensor .
 
 :Limit a owl:Class ;
     rdfs:label "Limit"@en ;
@@ -14832,68 +14864,6 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:VAV_Occupied_Heating_Min_Discharge_Air_Flow_Setpoint,
         brick:VAV_Occupied_Heating_Min_Supply_Air_Flow_Setpoint .
 
-:System a owl:Class ;
-    rdfs:label "System"@en ;
-    rdfs:subClassOf bf:Tag ;
-    skos:definition ""@en ;
-    bf:usedBy brick:AHU_Exhaust_Fan_System_Enable_Command,
-        brick:AHU_Heat_Exchanger_System_Enable_Status,
-        brick:AHU_System_Enable_Command,
-        brick:AHU_System_Shutdown_Command,
-        brick:AHU_System_Shutdown_Status,
-        brick:AHU_System_Status,
-        brick:CRAC_Emergency_Power_Off_Activated_By_Leak_Detection_System_Status,
-        brick:CRAC_Emergency_Power_Off_System_Enable_Status,
-        brick:CRAC_System_Enable_Command,
-        brick:CWS_Chilled_Water_System_Enable_Command,
-        brick:Chilled_Water_System,
-        brick:Chilled_Water_System_Enable,
-        brick:Chilled_Water_System_Enable_Command,
-        brick:DHWS_Domestic_Hot_Water_System_Enable_Command,
-        brick:DHWS_Domestic_Hot_Water_System_Start_Stop_Command,
-        brick:Disable_Hot_Water_System_Air_Temperature,
-        brick:Disable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
-        brick:Domestic_Hot_Water_System,
-        brick:Domestic_Hot_Water_System_Enable,
-        brick:Domestic_Hot_Water_System_Enable_Command,
-        brick:Domestic_Hot_Water_System_Start_Stop,
-        brick:Domestic_Hot_Water_System_Start_Stop_Command,
-        brick:Emergency_Power_Off_Activated_By_Leak_Detection_System,
-        brick:Emergency_Power_Off_Activated_By_Leak_Detection_System_Status,
-        brick:Emergency_Power_Off_System,
-        brick:Emergency_Power_Off_System_Enable,
-        brick:Emergency_Power_Off_System_Enable_Status,
-        brick:Enable_Hot_Water_System_Air_Temperature,
-        brick:Enable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
-        brick:Exhaust_Fan_System_Enable,
-        brick:Exhaust_Fan_System_Enable_Command,
-        brick:FCU_System_Status,
-        brick:Fire_Safety_System,
-        brick:HWS_Disable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
-        brick:HWS_Enable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
-        brick:HWS_Heat_Exchanger_System_Enable_Status,
-        brick:HWS_Hot_Water_System_Enable_Command,
-        brick:Heat_Exchanger_System_Enable,
-        brick:Heat_Exchanger_System_Enable_Status,
-        brick:Heating_Ventilation_Air_Conditioning_System,
-        brick:Hot_Water_System,
-        brick:Hot_Water_System_Enable,
-        brick:Hot_Water_System_Enable_Command,
-        brick:Lighting_System,
-        brick:Power_System,
-        brick:Steam_System,
-        brick:System,
-        brick:System_Enable,
-        brick:System_Enable_Command,
-        brick:System_Mode,
-        brick:System_Mode_Status,
-        brick:System_Shutdown,
-        brick:System_Shutdown_Command,
-        brick:System_Shutdown_Status,
-        brick:System_Status,
-        brick:VFD_System_Enable_Command,
-        brick:Water_System .
-
 :Time a owl:Class ;
     rdfs:label "Time"@en ;
     rdfs:subClassOf bf:Tag ;
@@ -15087,6 +15057,72 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:VFD_Fault_Reset_Command,
         brick:VFD_Filter_Reset_Command,
         brick:VFD_Speed_Reset_Command .
+
+:System a owl:Class ;
+    rdfs:label "System"@en ;
+    rdfs:subClassOf bf:Tag ;
+    skos:definition ""@en ;
+    bf:usedBy brick:AHU_Exhaust_Fan_System_Enable_Command,
+        brick:AHU_Heat_Exchanger_System_Enable_Status,
+        brick:AHU_System_Enable_Command,
+        brick:AHU_System_Shutdown_Command,
+        brick:AHU_System_Shutdown_Status,
+        brick:AHU_System_Status,
+        brick:CRAC_Emergency_Power_Off_Activated_By_Leak_Detection_System_Status,
+        brick:CRAC_Emergency_Power_Off_System_Enable_Status,
+        brick:CRAC_System_Enable_Command,
+        brick:CWS_Chilled_Water_System_Enable_Command,
+        brick:Chilled_Water_System,
+        brick:Chilled_Water_System_Enable,
+        brick:Chilled_Water_System_Enable_Command,
+        brick:DHWS_Domestic_Hot_Water_System_Enable_Command,
+        brick:DHWS_Domestic_Hot_Water_System_Start_Stop_Command,
+        brick:Disable_Hot_Water_System_Air_Temperature,
+        brick:Disable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
+        brick:Domestic_Hot_Water_System,
+        brick:Domestic_Hot_Water_System_Enable,
+        brick:Domestic_Hot_Water_System_Enable_Command,
+        brick:Domestic_Hot_Water_System_Start_Stop,
+        brick:Domestic_Hot_Water_System_Start_Stop_Command,
+        brick:Emergency_Power_Off_Activated_By_Leak_Detection_System,
+        brick:Emergency_Power_Off_Activated_By_Leak_Detection_System_Status,
+        brick:Emergency_Power_Off_System,
+        brick:Emergency_Power_Off_System_Enable,
+        brick:Emergency_Power_Off_System_Enable_Status,
+        brick:Enable_Hot_Water_System_Air_Temperature,
+        brick:Enable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
+        brick:Exhaust_Fan_System_Enable,
+        brick:Exhaust_Fan_System_Enable_Command,
+        brick:FCU_System_Status,
+        brick:Fire_Safety_System,
+        brick:HWS_Disable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
+        brick:HWS_Enable_Hot_Water_System_Outside_Air_Temperature_Setpoint,
+        brick:HWS_Heat_Exchanger_System_Enable_Status,
+        brick:HWS_Hot_Water_System_Enable_Command,
+        brick:Heat_Exchanger_System_Enable,
+        brick:Heat_Exchanger_System_Enable_Status,
+        brick:Heating_Ventilation_Air_Conditioning_System,
+        brick:Hot_Water_System,
+        brick:Hot_Water_System_Enable,
+        brick:Hot_Water_System_Enable_Command,
+        brick:Lighting_System,
+        brick:Power_System,
+        brick:Shading_System,
+        brick:Shading_System_Command,
+        brick:Shading_System_Position_Sensor,
+        brick:Shading_System_Position_Setpoint,
+        brick:Steam_System,
+        brick:System,
+        brick:System_Enable,
+        brick:System_Enable_Command,
+        brick:System_Mode,
+        brick:System_Mode_Status,
+        brick:System_Shutdown,
+        brick:System_Shutdown_Command,
+        brick:System_Shutdown_Status,
+        brick:System_Status,
+        brick:VFD_System_Enable_Command,
+        brick:Water_System .
 
 :Heat a owl:Class ;
     rdfs:label "Heat"@en ;
@@ -18038,6 +18074,7 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:Run_Direction_Command,
         brick:Run_Enable_Command,
         brick:Run_Request_Command,
+        brick:Shading_System_Command,
         brick:Shutdown_Hot_Water_When_Unoccupied_Command,
         brick:Speed_Reset_Command,
         brick:Standby_Load_Shed_Command,
@@ -18939,6 +18976,7 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:Room_Temperature_Sensor,
         brick:Run_Time_Sensor,
         brick:Running_Hour_Sensor,
+        brick:Shading_System_Position_Sensor,
         brick:Solar_Azimuth_Angle_Sensor,
         brick:Solar_Panel_Battery_Voltage_Sensor,
         brick:Solar_Panel_PV_Current_Output_Sensor,
@@ -20238,6 +20276,7 @@ brick:DemandResponse_Medium_Temperature_Hot_Water_Differential_Pressure_Load_She
         brick:Return_Supply_Fan_Differential_Speed_Setpoint,
         brick:Room_Temperature_Setpoint,
         brick:Schedule_Temperature_Setpoint,
+        brick:Shading_System_Position_Setpoint,
         brick:Static_Pressure_Max_Setpoint,
         brick:Static_Pressure_Min_Setpoint,
         brick:Supply_Air_Damper_Max_Position_Setpoint,

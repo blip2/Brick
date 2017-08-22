@@ -3810,6 +3810,17 @@ brick:Running_Hour_Sensor bf:usesMeasurement brick:Running_Hour ;
 brick:Schedule_Temperature_Setpoint bf:usesMeasurement brick:Schedule_Temperature ;
     bf:usesPoint brick:Setpoint .
 
+brick:Shading_System_Command bf:usesEquipment brick:Shading_System ;
+    bf:usesPoint brick:Command .
+
+brick:Shading_System_Position_Sensor bf:usesEquipment brick:Shading_System ;
+    bf:usesMeasurement brick:Position ;
+    bf:usesPoint brick:Sensor .
+
+brick:Shading_System_Position_Setpoint bf:usesEquipment brick:Shading_System ;
+    bf:usesMeasurement brick:Position ;
+    bf:usesPoint brick:Setpoint .
+
 brick:Short_Cycle_Alarm bf:usesMeasurement brick:Short_Cycle ;
     bf:usesPoint brick:Alarm .
 
