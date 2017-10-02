@@ -2,14 +2,19 @@
 
 Equipment:
     classes:
-      Power System:
+      Electrical System:
         classes:
             Isolator:
               Definition: local device to turn off power for maintenance
             Protection Device:
                 classes:
-                    Circuit Breaker:
-                        hasSynonyms: [Fuse]
+                    ACB:
+                        hasSynonyms: [Air Circuit Breaker]
+                    MCCB:
+                        hasSynonyms: [Moulded Case Circuit Breaker]
+                    MCB:
+                        hasSynonyms: [Minature Circuit Breaker]
+                    Fuse:
             Bus:
                 classes:
                     Circuit:
@@ -21,7 +26,6 @@ Equipment:
                         classes:
                             High Voltage Switch Board:
                                 Definition: high voltage switch board
-
             Generator:
                 classes:
                     Photovoltaic System:
@@ -29,3 +33,6 @@ Equipment:
             Rectifier:
             Alternator:
             Battery:
+            UPS:
+                contains: [Rectifier, Alternator, Battery]
+                hasSynonyms: [Uninterruptible Power Supply]
